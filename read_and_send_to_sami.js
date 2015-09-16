@@ -1,6 +1,6 @@
 var webSocketUrl = "wss://api.samsungsami.io/v1.1/websocket?ack=true";
-var device_id = "86f300e31d5d4e798221f5eaa02922cf";
-var device_token = "4a6d19f5f0594c5a86b9d13fa538191a";
+var device_id = "<Your Device ID>";
+var device_token = "<Your Device Token>";
 var fs = require('fs');
 
 var isWebSocketReady = false;
