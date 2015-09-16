@@ -54,20 +54,14 @@ function register(){
 /**
  * Send one message to SAMI
  */
- var sound = 1;
+ var button = 1;
  var light = 1;
 function sendData(){
     try{
         ts = ', "ts": '+getTimeMillis();
-        var data = {
-            "sound": sound
-        };
+    
 
-        var data2 = {
-            "light": light
-        };
-
-        payload_data = {"sound": sound, "light": light};
+        payload_data = {"button": button, "light": light};
 
         var payload = '{"sdid":"'+device_id+'"'+ts+', "data": '+JSON.stringify(payload_data)+', "cid":"'+getTimeMillis()+'"}';
         console.log('Sending payload ' + payload);
@@ -91,7 +85,7 @@ light = data;
 });
 
 fs.readFile("/sys/devices/12d10000.adc/iio:device0/in_voltage6_raw",'utf8',function(err,data){
-sound = data;
+button = data;
 });
 
 cb();
@@ -102,17 +96,3 @@ setInterval(function(){
     read_pin(sendData);
 },2000);
 
-
-/*setInterval(function(){
-
-var read_temp = 101
-
-if (!isWebSocketReady){
-    console.log("Websocket is not ready. Skip sending data to SAMI (temp:" + temp +")");
-    return;
-    }
-else {
-    sendData(420,69);
-}
-},1000);*/
-           
